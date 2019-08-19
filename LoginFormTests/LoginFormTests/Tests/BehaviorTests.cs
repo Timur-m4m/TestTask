@@ -1,6 +1,5 @@
-﻿using System.Data;
+﻿using System;
 using NUnit.Framework;
-using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 
 namespace LoginFormTests
@@ -29,7 +28,16 @@ namespace LoginFormTests
             var successLoginMsg = TestData.successLoginMsg;
             CommonOperations.Login(driver, user);
             var msg = driver.FindElementByXPath("//div[@class='flash success']").Text;
-            Assert.AreEqual(successLoginMsg, msg);
+
+            try
+            {
+                Assert.AreEqual(successLoginMsg, msg);
+            }
+            catch (Exception e)
+            {
+                Log.WriteLog(e.Message);
+                Log.WriteLog(e.StackTrace);
+            }
         }
 
         [Test, Description("Logout")]
@@ -40,7 +48,17 @@ namespace LoginFormTests
             CommonOperations.Login(driver, user);
             driver.FindElementByXPath("//a[@href='/logout']").Click();
             var msg = driver.FindElementByXPath("//div[@class='flash success']").Text;
-            Assert.AreEqual(successLogoutMsg, msg);
+
+            try
+            {
+                Assert.AreEqual(successLogoutMsg, msg);
+            }
+            catch (Exception e)
+            {
+                Log.WriteLog(e.Message);
+                Log.WriteLog(e.StackTrace);
+            }
+            
         }
 
         [Test, Description("Wrong login and correct password")]
@@ -60,7 +78,16 @@ namespace LoginFormTests
             var invalidPasswordMsg = TestData.invalidPasswordMsg;
             CommonOperations.Login(driver, user);
             var msg = driver.FindElementByXPath("//div[@class='flash error']").Text;
-            Assert.AreEqual(invalidPasswordMsg, msg);
+
+            try
+            {
+                Assert.AreEqual(invalidPasswordMsg, msg);
+            }
+            catch (Exception e)
+            {
+                Log.WriteLog(e.Message);
+                Log.WriteLog(e.StackTrace);
+            }
         }
 
         [Test, Description("Empty login and correct password")]
@@ -70,7 +97,16 @@ namespace LoginFormTests
             var invalidUsernameMsg = TestData.invalidUsernameMsg;
             CommonOperations.Login(driver, user);
             var msg = driver.FindElementByXPath("//div[@class='flash error']").Text;
-            Assert.AreEqual(invalidUsernameMsg, msg);
+
+            try
+            {
+                Assert.AreEqual(invalidUsernameMsg, msg);
+            }
+            catch (Exception e)
+            {
+                Log.WriteLog(e.Message);
+                Log.WriteLog(e.StackTrace);
+            }
         }
 
         [Test, Description("Correct login and empty password")]
@@ -80,7 +116,15 @@ namespace LoginFormTests
             var invalidPasswordMsg = TestData.invalidPasswordMsg;
             CommonOperations.Login(driver, user);
             var msg = driver.FindElementByXPath("//div[@class='flash error']").Text;
-            Assert.AreEqual(invalidPasswordMsg, msg);
+            try
+            {
+                Assert.AreEqual(invalidPasswordMsg, msg);
+            }
+            catch (Exception e)
+            {
+                Log.WriteLog(e.Message);
+                Log.WriteLog(e.StackTrace);
+            }
         }
     }
 }

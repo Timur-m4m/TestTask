@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
 using OpenQA.Selenium.Chrome;
 
 namespace LoginFormTests
@@ -33,9 +34,18 @@ namespace LoginFormTests
             var backgroundColor = driver.FindElementByXPath("//div[@class='flash success']")
                 .GetCssValue("background-color");
             var borderColor = driver.FindElementByXPath("//div[@class='flash success']").GetCssValue("border-color");
-            Assert.AreEqual(successLoginMsgTextColor, textColor);
-            Assert.AreEqual(successLoginMsgBackgroundColor, backgroundColor);
-            Assert.AreEqual(successLoginMsgBorderColor, borderColor);
+
+            try
+            {
+                Assert.AreEqual(successLoginMsgTextColor, textColor);
+                Assert.AreEqual(successLoginMsgBackgroundColor, backgroundColor);
+                Assert.AreEqual(successLoginMsgBorderColor, borderColor);
+            }
+            catch (Exception e)
+            {
+                Log.WriteLog(e.Message);
+                Log.WriteLog(e.StackTrace);
+            }
         }
 
         [Test, Description("Check success logout message color is green")]
@@ -51,9 +61,18 @@ namespace LoginFormTests
             var backgroundColor = driver.FindElementByXPath("//div[@class='flash success']")
                 .GetCssValue("background-color");
             var borderColor = driver.FindElementByXPath("//div[@class='flash success']").GetCssValue("border-color");
-            Assert.AreEqual(successLogoutMsgTextColor, textColor);
-            Assert.AreEqual(successLogoutMsgBackgroundColor, backgroundColor);
-            Assert.AreEqual(successLogoutMsgBorderColor, borderColor);
+
+            try
+            {
+                Assert.AreEqual(successLogoutMsgTextColor, textColor);
+                Assert.AreEqual(successLogoutMsgBackgroundColor, backgroundColor);
+                Assert.AreEqual(successLogoutMsgBorderColor, borderColor);
+            }
+            catch (Exception e)
+            {
+                Log.WriteLog(e.Message);
+                Log.WriteLog(e.StackTrace);
+            }
         }
 
         [Test, Description("Check invalid login message color is red ")]
@@ -68,9 +87,18 @@ namespace LoginFormTests
             var backgroundColor =
                 driver.FindElementByXPath("//div[@class='flash error']").GetCssValue("background-color");
             var borderColor = driver.FindElementByXPath("//div[@class='flash error']").GetCssValue("border-color");
-            Assert.AreEqual(invalidLoginMsgTextColor, textColor);
-            Assert.AreEqual(invalidLoginMsgBackgroundColor, backgroundColor);
-            Assert.AreEqual(invalidLoginMsgBorderColor, borderColor);
+
+            try
+            {
+                Assert.AreEqual(invalidLoginMsgTextColor, textColor);
+                Assert.AreEqual(invalidLoginMsgBackgroundColor, backgroundColor);
+                Assert.AreEqual(invalidLoginMsgBorderColor, borderColor);
+            }
+            catch (Exception e)
+            {
+                Log.WriteLog(e.Message);
+                Log.WriteLog(e.StackTrace);
+            }
         }
 
         [Test, Description("Check invalid password message color is red")]
@@ -85,9 +113,18 @@ namespace LoginFormTests
             var backgroundColor =
                 driver.FindElementByXPath("//div[@class='flash error']").GetCssValue("background-color");
             var borderColor = driver.FindElementByXPath("//div[@class='flash error']").GetCssValue("border-color");
-            Assert.AreEqual(invalidPasswordMsgTextColor, textColor);
-            Assert.AreEqual(invalidPasswordMsgBackgroundColor, backgroundColor);
-            Assert.AreEqual(invalidPasswordMsgBorderColor, borderColor);
+
+            try
+            {
+                Assert.AreEqual(invalidPasswordMsgTextColor, textColor);
+                Assert.AreEqual(invalidPasswordMsgBackgroundColor, backgroundColor);
+                Assert.AreEqual(invalidPasswordMsgBorderColor, borderColor);
+            }
+            catch (Exception e)
+            {
+                Log.WriteLog(e.Message);
+                Log.WriteLog(e.StackTrace);
+            }
         }
 
         [Test, Description("Check login button color is blue")]
@@ -101,9 +138,18 @@ namespace LoginFormTests
             var textColor = driver.FindElementByXPath("//button[@type='submit']").GetCssValue("color");
             var backgroundColor = driver.FindElementByXPath("//button[@type='submit']").GetCssValue("background-color");
             var borderColor = driver.FindElementByXPath("//button[@type='submit']").GetCssValue("border-color");
-            Assert.AreEqual(loginButtonTextColor, textColor);
-            Assert.AreEqual(loginButtonBackgroundColor, backgroundColor);
-            Assert.AreEqual(loginButtonBorderColor, borderColor);
+
+            try
+            {
+                Assert.AreEqual(loginButtonTextColor, textColor);
+                Assert.AreEqual(loginButtonBackgroundColor, backgroundColor);
+                Assert.AreEqual(loginButtonBorderColor, borderColor);
+            }
+            catch (Exception e)
+            {
+                Log.WriteLog(e.Message);
+                Log.WriteLog(e.StackTrace);
+            }
         }
 
         [Test, Description("Check logout button color is gray")]
@@ -117,9 +163,18 @@ namespace LoginFormTests
             var textColor = driver.FindElementByXPath("//a[@href='/logout']").GetCssValue("color");
             var backgroundColor = driver.FindElementByXPath("//a[@href='/logout']").GetCssValue("background-color");
             var borderColor = driver.FindElementByXPath("//a[@href='/logout']").GetCssValue("border-color");
-            Assert.AreEqual(logoutButtonTextColor, textColor);
-            Assert.AreEqual(logoutButtonBackgroundColor, backgroundColor);
-            Assert.AreEqual(logoutButtonBorderColor, borderColor);
+
+            try
+            {
+                Assert.AreEqual(logoutButtonTextColor, textColor);
+                Assert.AreEqual(logoutButtonBackgroundColor, backgroundColor);
+                Assert.AreEqual(logoutButtonBorderColor, borderColor);
+            }
+            catch (Exception e)
+            {
+                Log.WriteLog(e.Message);
+                Log.WriteLog(e.StackTrace);
+            }
         }
     }
 }
